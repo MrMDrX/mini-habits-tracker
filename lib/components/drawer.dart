@@ -20,7 +20,7 @@ class AppDrawer extends StatelessWidget {
                 size: 64, color: Theme.of(context).colorScheme.inversePrimary),
           ),
           DrawerTile(
-            title: 'Notes',
+            title: 'Home',
             leading: Icons.home_outlined,
             onTap: () {
               Navigator.pop(context);
