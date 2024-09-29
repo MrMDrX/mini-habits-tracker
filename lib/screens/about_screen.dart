@@ -35,7 +35,7 @@ class AboutScreen extends StatelessWidget {
                 "Mini Habits is a minimal habits tracking app that allows you to create and keep track of your daily habits. It is a free and open source app that is built using Flutter.",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.inversePrimary,
-                  fontSize: 16,
+                  fontSize: 20,
                 ),
               )),
         ],

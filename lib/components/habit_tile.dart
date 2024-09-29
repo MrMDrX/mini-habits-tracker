@@ -62,7 +62,7 @@ class HabitTile extends StatelessWidget {
                       ? Theme.of(context).colorScheme.secondary
                       : Theme.of(context).colorScheme.inversePrimary,
                   fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               trailing: Checkbox(

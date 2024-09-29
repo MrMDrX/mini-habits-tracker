@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_habits/components/drawer.dart';
 import 'package:mini_habits/components/habit_tile.dart';
+import 'package:mini_habits/components/heat_map.dart';
 import 'package:mini_habits/database/habit_database.dart';
 import 'package:mini_habits/models/habit_model.dart';
 import 'package:mini_habits/utils/habit_util.dart';
@@ -158,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'Mini Habits Tracker',
           style: TextStyle(
             fontFamily: GoogleFonts.dmSerifDisplay().fontFamily,
+            letterSpacing: 1.5,
             fontSize: 20,
           ),
         ),
@@ -172,8 +174,26 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Theme.of(context).colorScheme.inversePrimary,
         ),
       ),
-      body: _buildHabitList(),
+      body: ListView(
+        children: [_buildHeatMap(), _buildHabitList()],
+      ),
     );
+  }
+
+  Widget _buildHeatMap() {
+    final habitDB = context.watch<HabitDatabase>();
+    List<Habit> currentHabits = habitDB.currentHabits;
+    return FutureBuilder<DateTime?>(
+        future: habitDB.getFirstRun(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return HeatMap(
+                initDate: snapshot.data!,
+                datasets: getHeatMapDataset(currentHabits));
+          } else {
+            return Container();
+          }
+        });
   }
 
   Widget _buildHabitList() {
@@ -182,6 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return ListView.builder(
       itemCount: currentHabits.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         final habit = currentHabits[index];
         bool isCompletedToday = isHabitCompletedToday(habit.completedDays);
