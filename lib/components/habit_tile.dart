@@ -25,14 +25,14 @@ class HabitTile extends StatelessWidget {
           motion: const StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: deleteHabit,
+              onPressed: (context) => deleteHabit,
               backgroundColor: Colors.red.shade600,
               icon: Icons.delete_outlined,
               borderRadius: BorderRadius.circular(8),
               label: 'Delete',
             ),
             SlidableAction(
-              onPressed: editHabit,
+              onPressed: (context) => editHabit,
               backgroundColor: Colors.blue.shade600,
               icon: Icons.settings_outlined,
               borderRadius: BorderRadius.circular(8),

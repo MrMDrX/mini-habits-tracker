@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_habits/theme/theme.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _themeData;
+  late ThemeData _themeData;
 
   ThemeProvider() : _themeData = _getInitialTheme();
 
