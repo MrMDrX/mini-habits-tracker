@@ -40,7 +40,7 @@ Make sure you have Flutter installed on your machine. You can follow the install
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/mini-habits-tracker.git
+git clone https://github.com/MrMDrX/mini-habits-tracker.git
 cd mini-habits-tracker
 ```
 
